@@ -1,18 +1,23 @@
 import java.time.LocalDateTime;
 
 public class Flour extends Material implements Discount  {
+    private  int quanlity;
 
-    public Flour( int yearOfManufacture, int monthOfManufacture,int dateOfManufacture,int hourOfManufacture,int minusOfManufacture) {
-        super(yearOfManufacture,monthOfManufacture,dateOfManufacture,hourOfManufacture, minusOfManufacture);
+    public Flour(){
+
     }
 
-    public Flour(String id, String name, float quanlity, float cost) {
-        super(id, name, quanlity, cost);
+
+    public Flour(String id, String name, float cost,
+                 int yearOfManufacture, int monthOfManufacture,int dateOfManufacture,int hourOfManufacture,int minusOfManufacture,
+                 int quanlity) {
+        super(id, name, cost,yearOfManufacture,monthOfManufacture,dateOfManufacture,hourOfManufacture, minusOfManufacture);
+        this.quanlity=quanlity;
     }
 
     @Override
     public float caculateMoney() {
-        return this.getQuanlity() * this.getCost();
+        return  this.quanlity*this.getCost();
     }
 
     @Override
@@ -23,7 +28,9 @@ public class Flour extends Material implements Discount  {
 
 
     @Override
-    public void howToDiscount() {
-
+    public void howToDiscount(int discountNumber) {
+        float moneyOfDiscount =this.getCost()*discountNumber/100;
+        float newCost=this.getCost()- moneyOfDiscount;
+        this.setCost(newCost);
     }
 }

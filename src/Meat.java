@@ -2,19 +2,22 @@ import java.time.LocalDateTime;
 
 public class Meat extends Material implements Discount  {
 
-    private float unit;
+    private int unit;
     private float weight;
 
-    public Meat( int yearOfManufacture, int monthOfManufacture,int dateOfManufacture,int hourOfManufacture,int minusOfManufacture) {
-        super(yearOfManufacture,monthOfManufacture,dateOfManufacture,hourOfManufacture, minusOfManufacture);
-    }
-    public Meat(String id, String name, float quanlity, float cost){
-        super(id, name, quanlity, cost);
 
-    }
+public Meat(String id, String name, float cost,
+            int yearOfManufacture, int monthOfManufacture,int dateOfManufacture,int hourOfManufacture,int minusOfManufacture,
+            int unit,float weight
+            ) {
+    super(id, name, cost,yearOfManufacture,monthOfManufacture,dateOfManufacture,hourOfManufacture, minusOfManufacture);
+    this.unit=unit;
+    this.weight=weight;
+
+}
     @Override
     public float caculateMoney() {
-        return this.getQuanlity()*this.getCost()*this.unit*this.weight;
+        return this.getCost()*this.unit*this.weight;
     }
 
     @Override
@@ -25,7 +28,9 @@ public class Meat extends Material implements Discount  {
 
 
     @Override
-    public void howToDiscount() {
-
+    public void howToDiscount(int discountNumber) {
+        float moneyOfDiscount =this.getCost()*discountNumber/100;
+        float newCost=this.getCost()- moneyOfDiscount;
+        this.setCost(newCost);
     }
 }

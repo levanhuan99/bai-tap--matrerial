@@ -3,7 +3,7 @@ import java.time.LocalDateTime;
 public abstract class Material {
     private String id;
     private String name;
-    private float quanlity;
+
     private float cost;
 
     private int dateOfManufacture=0;
@@ -13,13 +13,21 @@ public abstract class Material {
     private int minusOfManufacture=0;
 
 
-    protected  Material( int yearOfManufacture, int monthOfManufacture,int dateOfManufacture,int hourOfManufacture,int minusOfManufacture){
-        this.yearOfManufacture=yearOfManufacture;
-        this.monthOfManufacture=monthOfManufacture;
-        this.dateOfManufacture=dateOfManufacture;
-        this.hourOfManufacture=hourOfManufacture;
-        this.minusOfManufacture=minusOfManufacture;
+    protected Material(){
+
     }
+
+    protected Material(String id, String name,  float cost, int yearOfManufacture, int monthOfManufacture,int dateOfManufacture,int hourOfManufacture,int minusOfManufacture){
+    this.id=id;
+    this.name=name;
+    this.cost=cost;
+    this.yearOfManufacture=yearOfManufacture;
+    this.monthOfManufacture=monthOfManufacture;
+    this.dateOfManufacture=dateOfManufacture;
+    this.hourOfManufacture=hourOfManufacture;
+    this.minusOfManufacture=minusOfManufacture;
+    }
+
 
     public int getMonthOfManufacture() {
         return monthOfManufacture;
@@ -53,12 +61,6 @@ public abstract class Material {
         this.minusOfManufacture = minusOfManufacture;
     }
 
-    protected Material(String id, String name, float quanlity, float cost){
-        this.id=id;
-        this.name=name;
-        this.quanlity=quanlity;
-        this.cost=cost;
-    }
 
     public String getId() {
         return id;
@@ -82,14 +84,6 @@ public abstract class Material {
 
     public void setDateOfManufacture(int dateOfManufacture) {
         this.dateOfManufacture = dateOfManufacture;
-    }
-
-    public float getQuanlity() {
-        return quanlity;
-    }
-
-    public void setQuanlity(float quanlity) {
-        this.quanlity = quanlity;
     }
 
     public float getCost() {
