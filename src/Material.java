@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public abstract class Material {
@@ -6,26 +7,23 @@ public abstract class Material {
 
     private float cost;
 
-    private int dateOfManufacture=0;
+    private int dayOfManufacture =0;
     private int monthOfManufacture=0;
     private int yearOfManufacture=0;
-    private int hourOfManufacture=0;
-    private int minusOfManufacture=0;
 
 
     protected Material(){
 
     }
 
-    protected Material(String id, String name,  float cost, int yearOfManufacture, int monthOfManufacture,int dateOfManufacture,int hourOfManufacture,int minusOfManufacture){
+    protected Material(String id, String name, float cost, int yearOfManufacture, int monthOfManufacture, int dayOfManufacture){
     this.id=id;
     this.name=name;
     this.cost=cost;
     this.yearOfManufacture=yearOfManufacture;
     this.monthOfManufacture=monthOfManufacture;
-    this.dateOfManufacture=dateOfManufacture;
-    this.hourOfManufacture=hourOfManufacture;
-    this.minusOfManufacture=minusOfManufacture;
+    this.dayOfManufacture = dayOfManufacture;
+
     }
 
 
@@ -45,23 +43,6 @@ public abstract class Material {
         this.yearOfManufacture = yearOfManufacture;
     }
 
-    public int getHourOfManufacture() {
-        return hourOfManufacture;
-    }
-
-    public void setHourOfManufacture(int hourOfManufacture) {
-        this.hourOfManufacture = hourOfManufacture;
-    }
-
-    public int getMinusOfManufacture() {
-        return minusOfManufacture;
-    }
-
-    public void setMinusOfManufacture(int minusOfManufacture) {
-        this.minusOfManufacture = minusOfManufacture;
-    }
-
-
     public String getId() {
         return id;
     }
@@ -78,12 +59,12 @@ public abstract class Material {
         this.name = name;
     }
 
-    public int getDateOfManufacture() {
-        return dateOfManufacture;
+    public int getDayOfManufacture() {
+        return dayOfManufacture;
     }
 
-    public void setDateOfManufacture(int dateOfManufacture) {
-        this.dateOfManufacture = dateOfManufacture;
+    public void setDayOfManufacture(int dayOfManufacture) {
+        this.dayOfManufacture = dayOfManufacture;
     }
 
     public float getCost() {
@@ -94,6 +75,6 @@ public abstract class Material {
         this.cost = cost;
     }
     public abstract  float caculateMoney();
-    public abstract  LocalDateTime  caculateExpiryDate();
+    public abstract LocalDate caculateExpiryDate();
 
 }

@@ -1,3 +1,3 @@
 public interface Discount {
-     void howToDiscount(int discountNumber);
+     void discount(int discountNumber);
 }

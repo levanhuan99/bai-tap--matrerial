@@ -1,4 +1,4 @@
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class Meat extends Material implements Discount  {
 
@@ -7,10 +7,9 @@ public class Meat extends Material implements Discount  {
 
 
 public Meat(String id, String name, float cost,
-            int yearOfManufacture, int monthOfManufacture,int dateOfManufacture,int hourOfManufacture,int minusOfManufacture,
-            int unit,float weight
+            int yearOfManufacture, int monthOfManufacture,int dateOfManufacture, int unit,float weight
             ) {
-    super(id, name, cost,yearOfManufacture,monthOfManufacture,dateOfManufacture,hourOfManufacture, minusOfManufacture);
+    super(id, name, cost,yearOfManufacture,monthOfManufacture,dateOfManufacture );
     this.unit=unit;
     this.weight=weight;
 
@@ -21,14 +20,13 @@ public Meat(String id, String name, float cost,
     }
 
     @Override
-    public LocalDateTime caculateExpiryDate() {
-        LocalDateTime newDate = LocalDateTime.of(getYearOfManufacture(),getMonthOfManufacture(),getDateOfManufacture(),getHourOfManufacture(),getMinusOfManufacture());
+    public LocalDate caculateExpiryDate() {
+        LocalDate newDate = LocalDate.of(getYearOfManufacture(),getMonthOfManufacture(), getDayOfManufacture());
         return newDate.plusDays(15);
     }
 
-
     @Override
-    public void howToDiscount(int discountNumber) {
+    public void discount(int discountNumber) {
         float moneyOfDiscount =this.getCost()*discountNumber/100;
         float newCost=this.getCost()- moneyOfDiscount;
         this.setCost(newCost);
